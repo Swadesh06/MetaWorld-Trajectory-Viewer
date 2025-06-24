@@ -1,0 +1,8 @@
+defaults:
+  - metaworld_base
+  - _self_
+
+benchmark_name: ML45_PRISE
+mode: train
+n_tasks: 1  # Just one task for analysis
+demos_per_env: 5  # 5 demos per environment 
