@@ -110,9 +110,9 @@ METAWORLD_ENVS = {
 - ML45_PRISE redistributes tasks to ensure more diverse test scenarios
 - Both have 45 training and 5 test tasks, but different task assignments
 
-## Environment Setup
+## Environment Setup 
 
-### Install Dependencies (EXACT Commands Used)
+### Install Dependencies 
 
 ```bash
 # Activate conda environment
@@ -198,23 +198,15 @@ python evaluate_trajectories.py --task_name drawer-open-v3 --traj_no 5 --mode te
 
 ## Example Output
 
-### Command:
+### Example Command:
 ```bash
 python evaluate_trajectories.py --task_name peg-insert-side-v3 --traj_no 75 --output_dir ./_videos
 ```
 
-### Video Output:
-<video src="./_videos/peg-insert-side-v3_traj_75.mp4" width="320" height="320" controls>
-  Your browser does not support the video tag. View the video at: ./_videos/peg-insert-side-v3_traj_75.mp4
-</video>
+### Example Video Output:
+![Peg Insertion Task Video](./_videos/peg-insert-side-v3_traj_75.mp4)
 
-**Note:** If viewing on GitHub, you may need to download the video file to view it, as GitHub doesn't always render video tags. The video can be found at: `./_videos/peg-insert-side-v3_traj_75.mp4`
 
-The output video shows:
-- Complete trajectory from start to finish
-- Robot successfully picking up the peg
-- Full insertion into the target hole
-- Task completion with success flag
 
 ### Console Output:
 ```
@@ -230,46 +222,16 @@ MetaWorld Trajectory Evaluation Script - Stage 1
 ============================================================
 ALL STAGES COMPLETE: Trajectory Evaluation Success!
 ============================================================
-📹 Video saved to: ./_videos/peg-insert-side-v3_traj_75.mp4
-🎬 Frames: 307
-📏 Resolution: (128, 128)
-⚡ Sampling: Every 1 frame(s)
+Video saved to: ./_videos/peg-insert-side-v3_traj_75.mp4
+Frames: 307
+Resolution: (128, 128)
+Sampling: Every 1 frame(s)
 ```
 
-## Technical Implementation Details
-
-### Key Features
-1. **Direct Frame Extraction**: Uses recorded RGB observations from dataset instead of environment replay
-2. **Sampling Support**: Reduces video size by sampling frames at specified frequency
-3. **Headless Rendering**: Configured for remote server environments without display
-4. **Multiple Dataset Support**: Works with ML45, ML45_PRISE, and MT50 splits
-5. **Automatic FPS Calculation**: Generates videos with appropriate playback speed
-
-### Why Direct Frame Extraction?
-
-**Original Issue:** When replaying trajectories, videos showed incomplete tasks:
-- Basketball: Robot never reached the ball
-- Peg insertion: Robot picked up peg but video ended before insertion
-- Success was recorded in dataset but not visible in replayed videos
-
-**Root Cause Analysis:**
-1. Initially suspected early termination, but trajectories were complete in dataset
-2. Real issue: Environment state mismatch during replay
-   - Dataset showed success at final steps (e.g., basketball at step 78/79)
-   - Replay showed no success at any step
-   - Rewards during replay (~0.02) didn't match recorded rewards (~7-10)
-
-**Why Replay Failed:**
-- MetaWorld environments have task randomization (object positions vary)
-- Each trajectory was recorded with specific task configuration
-- Replaying actions with different configuration → different outcomes
-- No random seed stored in dataset to recreate exact conditions
-
-**Solution:** Extract RGB frames directly from the recorded dataset (`obs/corner_rgb`), ensuring perfect reproduction of the original successful demonstrations without needing environment replay.
 
 ## Dataset Generation
 
-To generate your own MetaWorld dataset:
+To generate your a custom version of the MetaWorld dataset:
 
 ```bash
 # Generate sample dataset (5 trajectories per task)
@@ -288,14 +250,7 @@ python scripts/generate_metaworld_dataset.py \
     --n_episodes 100
 ```
 
-## Contributing
-
-When contributing, ensure:
+Ensure:
 1. All MetaWorld imports use V3 API
 2. Environment variables for headless rendering are properly set
-3. Frame extraction uses recorded observations, not environment replay
-4. Videos include appropriate metadata in filenames
-
-## License
-
-This tool is part of the QueST project. Please refer to the original repository for license information. 
+3. Videos include appropriate metadata in filenames
