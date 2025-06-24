@@ -1,6 +1,6 @@
 # MetaWorld Trajectory Viewer
 
-A tool for visualizing MetaWorld trajectory recordings from the QueST dataset. This viewer extracts RGB frames from recorded demonstrations and creates video files, supporting various sampling frequencies and dataset splits.
+Visualizing MetaWorld trajectory recordings from the QueST dataset. This viewer extracts RGB frames from recorded demonstrations and creates video files, supporting various sampling frequencies and dataset splits.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
