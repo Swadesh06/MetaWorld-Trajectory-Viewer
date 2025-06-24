@@ -107,7 +107,7 @@ METAWORLD_ENVS = {
 
 **Key Differences:**
 - ML45 uses the standard MetaWorld task split
-- ML45_PRISE follows the PRISE paper setup [(Zheng at al.)](https://arxiv.org/abs/2402.10450)
+- ML45_PRISE follows the PRISE paper setup [(Zheng at al.)](https://arxiv.org/abs/2402.10450) , the author's use this split to test their implementation against PRISE as a baseline
 - Both have 45 training and 5 test tasks, but different task assignments
 
 ## Environment Setup 
