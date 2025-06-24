@@ -105,10 +105,24 @@ METAWORLD_ENVS = {
 | **ML45_PRISE** | 45 tasks | 5 tasks | Custom split used in QueST paper with different task distribution for PRISE baseline |
 | **MT50** | 50 tasks | - | All tasks used for training |
 
-**Key Differences:**
-- ML45 uses the standard MetaWorld task split
-- ML45_PRISE follows the PRISE paper setup [(Zheng at al.)](https://arxiv.org/abs/2402.10450) , the author's use this split to test their implementation against PRISE as a baseline
-- Both have 45 training and 5 test tasks, but different task assignments
+#### Task Distribution
+
+**ML45 (Standard MetaWorld Benchmark):**
+- **Training:** 45 tasks (standard MetaWorld training set)
+- **Test Tasks:** `['bin-picking-v2', 'box-close-v2', 'door-lock-v2', 'door-unlock-v2', 'hand-insert-v2']`
+
+**ML45_PRISE (Custom QueST Split):**
+- **Training:** 45 tasks (different selection from ML45)
+- **Test Tasks:** `['box-close-v2', 'disassemble-v2', 'hand-insert-v2', 'pick-place-wall-v2', 'stick-pull-v2']`
+
+**Differences:**
+- ML45 uses the standard MetaWorld task split established in the original benchmark
+- ML45_PRISE follows the PRISE paper setup [(Zheng at al.)](https://arxiv.org/abs/2402.10450), the author's use this split to test their implementation against PRISE as a baseline
+- **Task Redistribution:** Some tasks are moved between train/test splits compared to ML45
+  - Tasks like `bin-picking-v2`, `door-lock-v2`, `door-unlock-v2` are test tasks in ML45 but training tasks in ML45_PRISE
+  - Tasks like `disassemble-v2`, `pick-place-wall-v2`, `stick-pull-v2` are training tasks in ML45 but test tasks in ML45_PRISE
+  - `box-close-v2` and `hand-insert-v2` remain as test tasks in both splits
+- Both maintain the same 45:5 train/test ratio but with different task compositions
 
 ## Environment Setup 
 
