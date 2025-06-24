@@ -205,12 +205,13 @@ python evaluate_trajectories.py --task_name peg-insert-side-v3 --traj_no 75 --ou
 
 ### Example Video Output:
 
-<video width="400" controls>
-  <source src="_videos/peg-insert-side-v3_traj_75.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
 
 *Peg Insertion Task - Trajectory 75*
+
+
+
+https://github.com/user-attachments/assets/43e80ece-37c2-49a8-8bcc-3910a127ca04
 
 
 
