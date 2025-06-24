@@ -102,12 +102,12 @@ METAWORLD_ENVS = {
 | Split | Training Tasks | Test Tasks | Description |
 |-------|---------------|------------|-------------|
 | **ML45** | 45 tasks | 5 tasks | Standard MetaWorld split used in most papers |
-| **ML45_PRISE** | 45 tasks | 5 tasks | Custom split used in QueST paper with different task distribution |
+| **ML45_PRISE** | 45 tasks | 5 tasks | Custom split used in QueST paper with different task distribution for PRISE baseline |
 | **MT50** | 50 tasks | - | All tasks used for training |
 
 **Key Differences:**
 - ML45 uses the standard MetaWorld task split
-- ML45_PRISE redistributes tasks to ensure more diverse test scenarios
+- ML45_PRISE follows the PRISE paper setup [(Zheng at al.)](https://arxiv.org/abs/2402.10450)
 - Both have 45 training and 5 test tasks, but different task assignments
 
 ## Environment Setup 
